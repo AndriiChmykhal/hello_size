@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'sizes.dart';
 
 class UserSizes {
-  final Sizes tShirtSize;
-  final Sizes pantsSize;
-  final Sizes shoeSize;
+  final Sizes? tShirtSize;
+  final Sizes? pantsSize;
+  final Sizes? shoeSize;
 
   UserSizes({
     required this.tShirtSize,

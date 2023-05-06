@@ -9,7 +9,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final UserSizes userSizes = UserSizes();
+    final UserSizes userSizes = UserSizes(
+      tShirtSize: null,
+      pantsSize: null,
+      shoeSize: null,
+    );
 
     return MaterialApp(
       title: 'My Size',

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hello_size/models/sizes.dart';
 
 class AddSizePage extends StatefulWidget {
-  final Sizes sizes;
-  const AddSizePage({Key? key, required this.sizes}) : super(key: key);
+  final UserSizes userSizes;
+  const AddSizePage({Key? key, required this.userSizes}) : super(key: key);
 
   @override
   _AddSizePageState createState() => _AddSizePageState();
