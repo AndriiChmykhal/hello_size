@@ -1,43 +1,15 @@
-class MyApp extends StatelessWidget {
-  final Sizes _userSizes = Sizes();
+import 'package:flutter/material.dart';
+import 'package:hello_size/pages/my_home_page.dart';
 
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My Sizes',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('My Sizes'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AddSizePage(_userSizes)),
-                  );
-                },
-                child: Text('Add Size'),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => MySizesPage(_userSizes)),
-                  );
-                },
-                child: Text('My Sizes'),
-              ),
-            ],
-          ),
-        ),
+      title: 'Hello Size',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      home: MyHomePage(title: 'Hello Size'),
     );
   }
 }

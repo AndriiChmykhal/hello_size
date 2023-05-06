@@ -1,92 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:hello_size/pages/add_size_page.dart';
 import 'package:hello_size/models/user_sizes.dart';
-import 'package:hello_size/utils/utils.dart';
+import 'package:hello_size/pages/my_size_page.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final UserSizes _userSizes = UserSizes(shirt: null, pant: null, shoe: null);
-
   @override
   Widget build(BuildContext context) {
+    final UserSizes userSizes = UserSizes();
+
     return MaterialApp(
-      title: 'My Sizes',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'My Size', userSize: _userSize),
+      title: 'My Size',
+      home: MyHomePage(userSizes: userSizes),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  final String title;
-  final Size userSize;
+  final UserSizes userSizes;
 
-  MyHomePage({required this.title, required this.userSize});
+  const MyHomePage({Key? key, required this.userSizes}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void _addSize() async {
-    await Navigator.push(
+  void addSizePage() {
+    Navigator.push(
       context,
-        MaterialPageRoute(
-          builder: (context) => AddSizePage(userSizesToSizes(widget.userSizes)
-          ),
-        ));
-        setState(() {});
-  }
-
-  String _getSizeLabel(double? size) {
-    if (size == null) {
-      return 'No size';
-    } else {
-      return size.toString();
-    }
+      MaterialPageRoute(
+        builder: (context) => AddSizePage(userSizes: widget.userSizes),
+      ),
+    ).then((value) => setState(() {}));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('My Size'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'My Sizes:',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            SizedBox(height: 16.0),
-            Text(
-              'Shirt size: ${_getSizeLabel(widget.userSizes.shirtSize)}',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              'Pant size: ${_getSizeLabel(widget.userSizes.pantSize)}',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            SizedBox(height: 8.0),
-            Text(
-              'Shoe size: ${_getSizeLabel(widget.userSizes.shoeSize)}',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _addSize,
-        tooltip: 'Add sizes',
-        child: Icon(Icons.add),
+      body: Column(
+        children: <Widget>[
+          SizedBox(height: 20),
+          Text(
+            'Your sizes:',
+            style: TextStyle(fontSize: 20),
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Height: ${widget.userSizes.height ?? 'Not set'}',
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Weight: ${widget.userSizes.weight ?? 'Not set'}',
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: addSizePage,
+            child: Text('Add size'),
+          ),
+        ],
       ),
     );
   }

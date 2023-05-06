@@ -1,11 +1,49 @@
-import 'package:hello_size/models/user_sizes.dart';
-import 'package:hello_size/models/size.dart';
+import 'package:flutter/material.dart';
 
-UserSizes userSizesToSizes(UserSizes userSizes) {
-  return Sizes(
-    shirt: userSizes.shirt,
-    pant: userSizes.pant,
-    shoe: userSizes.shoe,
-    brandSizes: userSizes.brandSizes,
-  );
+class UserSizes {
+  final double? height;
+  final double? weight;
+  final double? shoeSize;
+
+  UserSizes(this.height, this.weight, this.shoeSize);
+
+  Map<String, dynamic> toJson() {
+    return {
+      'height': height,
+      'weight': weight,
+      'shoeSize': shoeSize,
+    };
+  }
+
+  factory UserSizes.fromJson(Map<String, dynamic> json) {
+    return UserSizes(
+      json['height'] as double?,
+      json['weight'] as double?,
+      json['shoeSize'] as double?,
+    );
+  }
+}
+
+class Sizes {
+  final double height;
+  final double weight;
+  final double shoeSize;
+
+  Sizes(this.height, this.weight, this.shoeSize);
+
+  Map<String, dynamic> toJson() {
+    return {
+      'height': height,
+      'weight': weight,
+      'shoeSize': shoeSize,
+    };
+  }
+
+  factory Sizes.fromJson(Map<String, dynamic> json) {
+    return Sizes(
+      json['height'] as double,
+      json['weight'] as double,
+      json['shoeSize'] as double,
+    );
+  }
 }

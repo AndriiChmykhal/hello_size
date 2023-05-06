@@ -1,21 +1,26 @@
+import 'package:flutter/material.dart';
+
+import 'sizes.dart';
+
 class UserSizes {
-  String? brand;
-  String? size;
-  String? color;
-  Map<String, String> brandSizes;
+  final Sizes tShirtSize;
+  final Sizes pantsSize;
+  final Sizes shoeSize;
 
   UserSizes({
-    this.brand,
-    this.size,
-    this.color,
-    this.brandSizes = const {},
+    required this.tShirtSize,
+    required this.pantsSize,
+    required this.shoeSize,
   });
 
-  void updateBrandUserSize(String brand, String size) {
-    brandSizes[brand] = size;
-  }
+  UserSizes.fromJson(Map<String, dynamic> json)
+      : tShirtSize = Sizes.fromJson(json['tShirtSize']),
+        pantsSize = Sizes.fromJson(json['pantsSize']),
+        shoeSize = Sizes.fromJson(json['shoeSize']);
 
-  String? getBrandSize(String brand) {
-    return brandSizes[brand];
-  }
+  Map<String, dynamic> toJson() => {
+    'tShirtSize': tShirtSize.toJson(),
+    'pantsSize': pantsSize.toJson(),
+    'shoeSize': shoeSize.toJson(),
+  };
 }
