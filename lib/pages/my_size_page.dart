@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:hello_size/models/user_sizes.dart';
 import 'package:hello_size/models/sizes.dart';
+import 'package:hello_size/models/user.dart';
 
 class MySizePage extends StatefulWidget {
-  final UserSizes userSizes;
-
-  const MySizePage({Key? key, required this.userSizes}) : super(key: key);
-
   @override
   _MySizePageState createState() => _MySizePageState();
 }
 
 class _MySizePageState extends State<MySizePage> {
+  final UserSizes userSizes = UserSizes(
+    pantsSize: Sizes.M,
+    shoeSize: 42,
+    tShirtSize: Sizes.L,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +26,15 @@ class _MySizePageState extends State<MySizePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Shirt size: ${widget.userSizes.sizes.shirtSize ?? 'Not set'}',
+              'Pants size: ${userSizes.pantsSize}',
               style: TextStyle(fontSize: 24),
             ),
-            SizedBox(height: 16),
             Text(
-              'Pants size: ${widget.userSizes.sizes.pantsSize ?? 'Not set'}',
+              'Shoe size: ${userSizes.shoeSize}',
               style: TextStyle(fontSize: 24),
             ),
-            SizedBox(height: 16),
             Text(
-              'Shoe size: ${widget.userSizes.sizes.shoeSize ?? 'Not set'}',
+              'T-shirt size: ${userSizes.tShirtSize}',
               style: TextStyle(fontSize: 24),
             ),
           ],
