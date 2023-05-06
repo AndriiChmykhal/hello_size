@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'sizes.dart';
 
 class UserSizes {
-  final Sizes? tShirtSize;
-  final Sizes? pantsSize;
-  final Sizes? shoeSize;
+  Sizes? tShirtSize;
+  Sizes? pantsSize;
+  Sizes? shoeSize;
 
   UserSizes({
-    required this.tShirtSize,
-    required this.pantsSize,
-    required this.shoeSize,
+    this.tShirtSize = Sizes.small,
+    this.pantsSize = Sizes.small,
+    this.shoeSize = Sizes.small,
   });
+}
 
   UserSizes.fromJson(Map<String, dynamic> json)
       : tShirtSize = Sizes.fromJson(json['tShirtSize']),
