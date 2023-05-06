@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hello_size/models/user_sizes.dart';
 import 'package:hello_size/pages/add_size_page.dart';
-
 import 'package:hello_size/models/size.dart';
 
 class MySizePage extends StatefulWidget {
-  final Sizes userSizes;
+  final UserSizes userSizes;
   MySizePage({required this.userSizes});
 
   @override
@@ -13,7 +12,7 @@ class MySizePage extends StatefulWidget {
 }
 
 class _MySizePageState extends State<MySizePage> {
-  late Sizes _userSizes;
+  late Size _userSizes;
 
   @override
   void initState() {
@@ -22,7 +21,7 @@ class _MySizePageState extends State<MySizePage> {
   }
 
   void _navigateToAddSizePage() async {
-    final Sizes? newSizes = await Navigator.push<Sizes>(
+    final UserSizes? newSizes = await Navigator.push<Size>(
       context,
       MaterialPageRoute(
         builder: (context) => AddSizePage(

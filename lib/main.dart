@@ -17,16 +17,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'My Sizes', userSizes: _userSizes),
+      home: MyHomePage(title: 'My Size', userSize: _userSize),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   final String title;
-  final UserSizes userSizes;
+  final Size userSize;
 
-  MyHomePage({required this.title, required this.userSizes});
+  MyHomePage({required this.title, required this.userSize});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();

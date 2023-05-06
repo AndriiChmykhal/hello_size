@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_size/models/size.dart';
 
 class AddSizePage extends StatefulWidget {
-  final Sizes userSizes;
+  final Size userSizes;
 
   AddSizePage({Key? key, required this.userSizes}) : super(key: key);
 
@@ -18,7 +18,7 @@ class _AddSizePageState extends State<AddSizePage> {
 
   void _saveSizes() {
     if (_formKey.currentState!.validate()) {
-      final newSizes = Sizes(
+      final newSizes = UserSizes(
         shirtSize: double.tryParse(_shirtSizeController.text) ?? 0.0,
         pantSize: double.tryParse(_pantSizeController.text) ?? 0.0,
         shoeSize: double.tryParse(_shoeSizeController.text) ?? 0.0,
@@ -59,7 +59,7 @@ class _AddSizePageState extends State<AddSizePage> {
 
   Widget _buildPantSizeField() {
     return TextFormField(
-      controller: _pantSizeController,
+      controller: _pantUserController,
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
         labelText: 'Pant Size',

@@ -1,10 +1,10 @@
-class Sizes {
+class UserSizes {
   double? shirtSize;
   double? pantSize;
   double? shoeSize;
   Map<String, Map<String, double>>? brandToSizeMap;
 
-  Sizes({this.shirtSize, this.pantSize, this.shoeSize, this.brandToSizeMap});
+  UserSizes({this.shirtSize, this.pantSize, this.shoeSize, this.brandToSizeMap});
 
   void setBrandSize(String brand, String type, double size) {
     brandToSizeMap?[brand] = {type: size};
