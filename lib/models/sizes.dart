@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class Sizes {
+abstract class Sizes {
   final double neck;
   final double bust;
   final double waist;
@@ -15,6 +15,10 @@ class Sizes {
   static const Sizes medium = Sizes("M", "cm");
   static const Sizes large = Sizes("L", "cm");
   static const Sizes extraLarge = Sizes("XL", "cm");
+
+  String get small;
+  String get medium;
+  String get large;
 
   Sizes({
     required this.neck,
